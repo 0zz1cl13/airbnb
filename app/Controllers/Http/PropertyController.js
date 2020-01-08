@@ -28,7 +28,10 @@ class PropertyController {
 
     // return properties;
 
-    const properties = Property.all()
+    const properties = Property
+      .query()
+      .with('images')
+      .fetch()
 
     return properties
   }
@@ -93,7 +96,7 @@ class PropertyController {
       'price'
     ])
 
-    console.log(property)
+    // console.log(property)
 
     property.merge(data)
 
